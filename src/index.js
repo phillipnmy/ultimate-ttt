@@ -109,14 +109,16 @@ class Game extends React.Component {
         const squares = current.squares.slice();
         const result = current.result.slice();
 
-        //update the result table after the clicking, only the changed one needs to be update
-        result[big] = calculatePartWinner(squares[big]);
 
+        console.log(result)
         if (calculateWinner(result) || squares[big][now]) {
             return;
         }
         //set the clicked position
         squares[big][now] = this.state.xIsNext ? "X" : "O";
+        //update the result table after the clicking, only the changed one needs to be update
+        result[big] = calculatePartWinner(squares[big]);
+        console.log(result)
         this.setState({
             history: history.concat([
                 {
